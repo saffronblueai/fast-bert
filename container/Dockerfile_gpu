@@ -61,7 +61,9 @@ RUN pip --no-cache-dir install \
     fastprogress \
     python-box \
     tensorboardX \
-    fastai
+    fastai \
+    fastscript \   # requirements for inference
+    s3fs           # requirements for inference
 
 RUN git clone https://github.com/NVIDIA/apex.git && cd apex && python setup.py install --cuda_ext --cpp_ext
 
@@ -70,6 +72,7 @@ RUN pip install fast-bert
 
 ENV PATH="/opt/ml/code:${PATH}"
 COPY /bert /opt/ml/code
+ADD inference_csv.py /opt/ml/code/inference_csv.py # inference script
 
 WORKDIR /opt/ml/code
 

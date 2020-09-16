@@ -60,7 +60,9 @@ RUN pip --no-cache-dir install \
         pandas \
         Pillow \
         h5py \
-        fastprogress
+        fastprogress \
+        fastscript \   # requirements for inference
+        s3fs           # requirements for inference
 
 RUN pip install numpy==1.16
 
@@ -84,6 +86,7 @@ ENV LC_ALL C.UTF-8
 
 ENV PATH="/opt/ml/code:${PATH}"
 COPY /bert /opt/ml/code
+ADD inference_csv.py /opt/ml/code/inference_csv.py # inference script
 WORKDIR /opt/ml/code
 
 ENTRYPOINT ["python3", "-u", "/opt/ml/code/serve"]

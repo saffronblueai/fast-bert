@@ -60,7 +60,9 @@ RUN pip --no-cache-dir install \
         Pillow \
         h5py \
         cudnn \
-        fastprogress
+        fastprogress \
+        fastscript \   # requirements for inference
+        s3fs           # requirements for inference
 
 RUN pip install numpy==1.16
 
