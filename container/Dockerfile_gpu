@@ -62,8 +62,8 @@ RUN pip --no-cache-dir install \
     python-box \
     tensorboardX \
     fastai \
-    fastscript \   # requirements for inference
-    s3fs           # requirements for inference
+    fastscript \
+    s3fs
 
 RUN git clone https://github.com/NVIDIA/apex.git && cd apex && python setup.py install --cuda_ext --cpp_ext
 
