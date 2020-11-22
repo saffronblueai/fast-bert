@@ -521,10 +521,10 @@ class BertLearner(Learner):
         return results
 
     ### Return Predictions ###
-    def predict_batch(self, texts=None):
+    def predict_batch(self, texts=None, batch_size=None):
 
         if texts:
-            dl = self.data.get_dl_from_texts(texts)
+            dl = self.data.get_dl_from_texts(texts, batch_size)
         elif self.data.test_dl:
             dl = self.data.test_dl
         else:

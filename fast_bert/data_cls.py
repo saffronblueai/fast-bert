@@ -505,7 +505,7 @@ class BertDataBunch(object):
                 test_dataset, sampler=test_sampler, batch_size=self.test_batch_size
             )
 
-    def get_dl_from_texts(self, texts):
+    def get_dl_from_texts(self, texts, batch_size=None):
 
         test_examples = []
         input_data = []
@@ -519,8 +519,10 @@ class BertDataBunch(object):
         )
 
         test_sampler = SequentialSampler(test_dataset)
+        if batch_size is None:
+            batch_size = self.batch_size_per_gpu
         return DataLoader(
-            test_dataset, sampler=test_sampler, batch_size=self.batch_size_per_gpu
+            test_dataset, sampler=test_sampler, batch_size=batch_size
         )
 
     def save(self, filename="databunch.pkl"):
