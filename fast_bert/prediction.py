@@ -72,8 +72,8 @@ class BertClassificationPredictor(object):
 
         return learner
 
-    def predict_batch(self, texts):
-        return self.learner.predict_batch(texts)
+    def predict_batch(self, texts, batch_size=None):
+        return self.learner.predict_batch(texts, batch_size=batch_size)
 
     def predict(self, text):
         predictions = self.predict_batch([text])[0]
