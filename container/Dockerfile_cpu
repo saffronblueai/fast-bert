@@ -68,9 +68,7 @@ RUN pip install numpy==1.16
 
 
 RUN pip install pytorch-pretrained-bert
-RUN pip install --no-cache-dir fast-bert --upgrade
-
-
+RUN pip install --no-cache-dir git+https://github.com/saffronblueai/fast-bert.git --upgrade
 
 ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
